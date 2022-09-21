@@ -1104,6 +1104,7 @@ Context Example for **`traffic_type = dns`** for base command **`umbrella-report
 |------------------------------------------------------------------| --- | --- |
 | UmbrellaReporting.ActivityProxy.type                             | String <br/>| External IP for entry. | 
 | UmbrellaReporting.ActivityProxy.externalip                         | String | External IP for entry. | 
+| UmbrellaReporting.ActivityProxy.destinationip                         | String | Destination IP for entry.                                    |
 | UmbrellaReporting.ActivityProxy.blockedfiletype                         | String | locked file type for entry. | 
 | UmbrellaReporting.ActivityProxy.contenttype                         | String | The type of web content, typically text/html. |
 | UmbrellaReporting.ActivityProxy.forwardingmethod                         | String | The request method (GET, POST, HEAD, etc.) |
@@ -1168,6 +1169,7 @@ Context Example for **`traffic_type = dns`** for base command **`umbrella-report
 | UmbrellaReporting.ActivityProxy.blockedapplications.label          | String | Label of the application. | 
 | UmbrellaReporting.ActivityProxy.blockedapplications.type           | String | Type of the application, NBAR or AVC. | 
 | UmbrellaReporting.ActivityProxy.blockedapplications.category.label | String | Label of the application category. | 
+| UmbrellaReporting.ActivityProxy.blockedapplications.category.id | Number | Label of the application category. | 
 | UmbrellaReporting.ActivityProxy.policy.timebasedrule                | Boolean | Whether the policy triggered a time-of-day rule. | 
 | UmbrellaReporting.ActivityProxy.policy.ruleid               | Number | The rule ID for the policy. | 
 | UmbrellaReporting.ActivityProxy.policy.rulesetid           | Number | The rule set ID for the policy. |  
@@ -1176,6 +1178,9 @@ Context Example for **`traffic_type = dns`** for base command **`umbrella-report
 | UmbrellaReporting.ActivityProxy.httperrors.type               | Number | Type of the error CertificateError or TLSError. | 
 | UmbrellaReporting.ActivityProxy.httperrors.attributes           | Number | Map of additional information about the error. |  
 | UmbrellaReporting.ActivityProxy.httperrors.code                 | String | The http error code. |
+| UmbrellaReporting.ActivityProxy.amp.disposition               | String | AMP disposition.                                  | 
+| UmbrellaReporting.ActivityProxy.amp.malware           | String | AMP malware.                              |  
+| UmbrellaReporting.ActivityProxy.amp.score                 | Number | AMP score.             |
 
 
 Command Example for **`traffic_type = proxy`** for base command **`umbrella-reporting-activity-get`**
@@ -1843,9 +1848,9 @@ Context Example for **`summary_type=destination`**  for base command **`umbrella
 | UmbrellaReporting.SignatureListSummary.signatures.generatorid | Number   | Generator id. | 
 | UmbrellaReporting.SignatureListSummary.signatures.id | Number   | ID. | 
 | UmbrellaReporting.SignatureListSummary.signatures.lasteventat | Number   | Last Eevent At. | 
-| UmbrellaReporting.SignatureListSummary.signatures.lasteventat.counts.blocked | Number   | Blocked | 
-| UmbrellaReporting.SignatureListSummary.signatures.lasteventat.counts.detected | Number   | Detected. |
-| UmbrellaReporting.SignatureListSummary.signatures.lasteventat.counts.wouldblock | Number   | Would Block. |
+| UmbrellaReporting.SignatureListSummary.signatures.counts.blocked | Number   | Blocked | 
+| UmbrellaReporting.SignatureListSummary.signatures.counts.detected | Number   | Detected. |
+| UmbrellaReporting.SignatureListSummary.signatures.counts.wouldblock | Number   | Would Block. |
 
 
 Command example for **`summary_type=intrusion_rule`**  for base command **`umbrella-reporting-summary-list`**
