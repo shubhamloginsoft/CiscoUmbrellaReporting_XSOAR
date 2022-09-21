@@ -388,7 +388,7 @@ List of event types ordered by the number of requests made for each type of even
 ```json
 {
     "UmbrellaReporting": {
-        "TopEventType": [
+        "EventType": [
             {
                 "count": 0,
                 "eventtype": "url_integration"
@@ -585,9 +585,9 @@ List of top threats within a timeframe. Returns both DNS and Proxy data.
 
 | **Path** | **Type** | **Description** |
 | --- | --- | --- |
-| UmbrellaReporting.Threats.threat | String | The threat name | 
-| UmbrellaReporting.Threats.threattype | String | The threat type | 
-| UmbrellaReporting.Threats.count | Number | The number of requests for that threat name | 
+| UmbrellaReporting.Threat.threat | String | The threat name | 
+| UmbrellaReporting.Threat.threattype | String | The threat type | 
+| UmbrellaReporting.Threat.count | Number | The number of requests for that threat name | 
 
 #### Command example
 ```!umbrella-reporting-threat-list limit=1```
@@ -663,7 +663,8 @@ List all activity entries (dns/proxy/firewall/ip/intrusion/amp) within timeframe
 | UmbrellaReporting.Activity.categories.integration | Boolean | If the category is an integration | 
 | UmbrellaReporting.Activity.verdict | String | Verdict for entry. | 
 | UmbrellaReporting.Activity.domain | String | Domain for entry. | 
-| UmbrellaReporting.Activity.timestamp | Number | Timestamp in ms. | 
+| UmbrellaReporting.Activity.timestamp | Number | Timestamp in ms. |
+| UmbrellaReporting.Activity.returncode | Number | The DNS return code for this request. For more information, see Common DNS return codes for any DNS service (and Umbrella). |
 | UmbrellaReporting.Activity.time | String | The time in 24 hour format based on the timezone parameter. | 
 | UmbrellaReporting.Activity.date | String | The date from the timestamp based on the timezone parameter. | 
 | UmbrellaReporting.Activity.allapplications.id | Number | ID of the application. | 
@@ -867,7 +868,7 @@ Only one activity type can be selected at a time.
 
 | **Argument Name** | **Description**                                                                                                                                                                                                                                                                            | **Required** |
 | --- |--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------| --- |
-| traffic_type | Specify the type of traffic. Valid values are:<ul><li>dns</li><li>proxy</li><li>firewall</li><li>intrusion</li><li>ip</li><li>amp</li></ul>Supported optional parameter for **DNS** traffic type are **limit, from,  to, domains, ip, verdict, threats, threat_types, identity_types.**.<br/> Supported optional parameter for **Proxy** traffic type are **limit, from, to, domains, ip, verdict, threats, threat_types, urls, ports, identity_types, file_name, amp_disposition**.<br/> Supported optional parameter for **Firewall** traffic type are **limit, from, to, ip, ports, verdict**.<br/> Supported optional parameter for **Intrusion** traffic type are **limit, from, to, ip, ports, signatures, intrusion_action**.<br/> Supported optional parameter for **IP** traffic type are **limit, from, to, ip, ports, identity_types, verdict**.<br/> Supported optional parameter for **AMP** traffic type are l**imit, from, to, amp_disposition, sha256** | Required |
+| traffic_type | Specify the type of traffic. Valid values are:<ul><li>dns</li><li>proxy</li><li>firewall</li><li>intrusion</li><li>ip</li><li>amp</li></ul>Supported optional parameters for **traffic_type=DNS** are <br/> <ul><li>**`limit`, `from`, `to`, `domains`, `ip`, `verdict`, `threats`, `threat_types`, `identity_types`.**</li></ul><br/> Supported optional parameters for **traffic_type=Proxy** are <br/><ul><li>**`limit`, `from`, `to`, `domains`, `ip`, `verdict`, `threats`, `threat_types`, `urls`, `ports`, `identity_types`, `file_name`, `amp_disposition`**.</li></ul><br/> Supported optional parameters for **traffic_type=Firewall** are <br/><ul><li>**`limit`, `from`, `to`, `ip`, `ports`, `verdict`**</li></ul><br/> Supported optional parameters for **traffic_type=Intrusion** are <ul><li>**`limit`, `from`, `to`, `ip`, `ports`, `signatures`, `intrusion_action`**</li></ul><br/> Supported optional parameters for **traffic_type=IP** are <ul><li>**`limit`, `from`, `to`, `ip`, `ports`, `identity_types`, verdict**</li></ul><br/> Supported optional parameters for **traffic_type=AMP** are **<ul><li>`limit`, `from`, `to`, `amp_disposition`, `sha256`**</li></ul> | Required |
 | from | A timestamp (milliseconds) or relative time string (for example:-1days' or '1639146300000'). Filter for data that appears after this time. By default value is -7days.                                                                                                                     | Optional | 
 | to | A timestamp (milliseconds) or relative time string (for example:'now' or 1661510185000). Filter for data that appears before this time. By default value is 'now'.                                                                                                                         | Optional | 
 | limit | The maximum number of records to return from the collection. Default value of limit is 50.                                                                                                                                                                                                 | Optional | 
